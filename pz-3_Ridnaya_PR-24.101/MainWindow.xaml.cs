@@ -29,6 +29,8 @@ namespace pz_3_Ridnaya_PR_24._101
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             FrmMain.GoBack();
+
+            
         }
 
         private void FrmMain_ContentRendered(object sender, EventArgs e)

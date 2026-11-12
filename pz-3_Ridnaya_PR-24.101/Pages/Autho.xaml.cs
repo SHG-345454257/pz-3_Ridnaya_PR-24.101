@@ -20,6 +20,11 @@ namespace pz_3_Ridnaya_PR_24._101.Pages
         private void btnEnterGuests_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Client(null, null));
+            txtBlockCaptcha.Visibility = Visibility.Hidden;
+            txtboxCaptcha.Visibility = Visibility.Hidden;
+            currentCaptcha = "";
+            failedAttempts = 0;
+            txtbLogin.Clear();
         }
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
@@ -66,6 +71,7 @@ namespace pz_3_Ridnaya_PR_24._101.Pages
                         {
                             GenerateCaptcha();
                         }
+                        pswbPassword.Clear();
 
                         return;
                     }
@@ -74,10 +80,22 @@ namespace pz_3_Ridnaya_PR_24._101.Pages
                     if (user.Role.role_name == "Клиент")
                     {
                         NavigationService.Navigate(new Client(user, user.Role.role_name));
+
+                        txtBlockCaptcha.Visibility = Visibility.Hidden;
+                        txtboxCaptcha.Visibility = Visibility.Hidden;
+                        currentCaptcha = "";
+                        failedAttempts = 0;
+                        txtbLogin.Clear();
                     }
                     else if (user.Role.role_name == "Сотрудник")
                     {
                         NavigationService.Navigate(new Employee(user, user.Role.role_name));
+
+                        txtBlockCaptcha.Visibility = Visibility.Hidden;
+                        txtboxCaptcha.Visibility = Visibility.Hidden;
+                        currentCaptcha = "";
+                        failedAttempts = 0;
+                        txtbLogin.Clear();
                     }
                     else
                     {
