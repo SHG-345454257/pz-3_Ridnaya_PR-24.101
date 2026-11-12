@@ -1,28 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace pz_3_Ridnaya_PR_24._101.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Client.xaml
-    /// </summary>
     public partial class Client : Page
     {
-        public Client()
+        private User currentUser;
+        private string currentRole;
+
+        public Client(User user, string role)
         {
             InitializeComponent();
+
+            currentUser = user;
+            currentRole = role;
+
+            if (currentUser != null)
+            {
+                txtWelcome.Text = "Личный кабинет клиента";
+                txtUserInfo.Text = "Вы вошли как: " + currentUser.login;
+            }
+            else
+            {
+                txtWelcome.Text = "Просмотр в гостевом режиме";
+                txtUserInfo.Text = "Вы вошли без авторизации";
+            }
         }
     }
 }
